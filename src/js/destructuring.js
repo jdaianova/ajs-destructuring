@@ -1,9 +1,12 @@
-export default function destructuring(character) {
-  const arrResult = JSON.parse(JSON.stringify(character.special));
-  for (let i = 0; i < arrResult.length; i += 1) {
-    if (!('description' in arrResult[i])) {
-      arrResult[i].description = 'Описание недоступно';
-    }
+export default function destructuring(char) {
+  const resultArr = [];
+  for (let i = 0; i < char.special.length; i += 1) {
+    const {
+      id, name, icon, description = 'Описание недоступно',
+    } = char.special[i];
+    resultArr.push({
+      id, name, icon, description,
+    });
   }
-  return arrResult;
+  return resultArr;
 }
